@@ -1,4 +1,4 @@
-# go router
+# GO ROUTER
 
 Router framework with support of [go-app-env](https://github.com/natepboat/go-app-env) for server properties.
 
