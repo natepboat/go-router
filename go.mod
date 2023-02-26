@@ -1,4 +1,4 @@
-module github.com/natepboat/go-rest-api
+module github.com/natepboat/go-router
 
 go 1.18
 

@@ -10,8 +10,8 @@ import (
 
 	"github.com/google/uuid"
 	goappenv "github.com/natepboat/go-app-env"
-	"github.com/natepboat/go-rest-api/contextKey"
-	"github.com/natepboat/go-rest-api/httpMethod"
+	"github.com/natepboat/go-router/contextKey"
+	"github.com/natepboat/go-router/httpMethod"
 )
 
 type routeConfig struct {
