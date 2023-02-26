@@ -44,7 +44,7 @@ Router use UUID string for trace id, any match route can access trace id from re
 
 For client side can access trace id from response header name `x-trace-id`
 
-Example of usage:
+## Example of usage
 ```go
 package main
 //... import
