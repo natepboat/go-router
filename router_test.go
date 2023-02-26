@@ -54,7 +54,7 @@ func TestAddRoute(t *testing.T) {
 }
 
 func TestHandle(t *testing.T) {
-	t.Run("Not match", testHandleNotMatch)
+	t.Run("not match", testHandleNotMatch)
 	t.Run("match", testHandleMatch)
 }
 
@@ -74,6 +74,22 @@ func TestNewServer(t *testing.T) {
 		fsys := fstest.MapFS{
 			path.Join("resources", "config.json"): &fstest.MapFile{
 				Data: []byte(`{"server":{"port":":9000","readTimeout":"fiveMinute","writeTimeout":"10m"}}`),
+			},
+		}
+		logger := log.New(os.Stdout, "", log.Ldate)
+
+		appenv := goappenv.NewAppEnv(fsys)
+		r := NewRouter(appenv, logger)
+		server, err := r.NewServer()
+
+		assert.Nil(t, server)
+		assert.NotNil(t, err)
+	})
+
+	t.Run("customize server with invalid writeTimeout", func(t *testing.T) {
+		fsys := fstest.MapFS{
+			path.Join("resources", "config.json"): &fstest.MapFile{
+				Data: []byte(`{"server":{"port":":9000","readTimeout":"5m","writeTimeout":"tenMinutes"}}`),
 			},
 		}
 		logger := log.New(os.Stdout, "", log.Ldate)
