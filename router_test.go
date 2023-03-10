@@ -1,6 +1,7 @@
 package gorouter
 
 import (
+	"context"
 	"fmt"
 	"io"
 	"log"
@@ -78,7 +79,7 @@ func TestNewServer(t *testing.T) {
 		}
 		logger := log.New(os.Stdout, "", log.Ldate)
 
-		appenv := goappenv.NewAppEnv(fsys)
+		appenv := goappenv.NewAppEnv(fsys, context.Background())
 		r := NewRouter(appenv, logger)
 		server, err := r.NewServer()
 
@@ -94,7 +95,7 @@ func TestNewServer(t *testing.T) {
 		}
 		logger := log.New(os.Stdout, "", log.Ldate)
 
-		appenv := goappenv.NewAppEnv(fsys)
+		appenv := goappenv.NewAppEnv(fsys, context.Background())
 		r := NewRouter(appenv, logger)
 		server, err := r.NewServer()
 
@@ -110,7 +111,7 @@ func TestNewServer(t *testing.T) {
 		}
 		logger := log.New(os.Stdout, "", log.Ldate)
 
-		appenv := goappenv.NewAppEnv(fsys)
+		appenv := goappenv.NewAppEnv(fsys, context.Background())
 		r := NewRouter(appenv, logger)
 		server, _ := r.NewServer()
 
@@ -284,7 +285,7 @@ func testHandleMatch(t *testing.T) {
 	})
 }
 
-func handleHttp(t *testing.T, r *router, method string, path string, body io.Reader) *httptest.ResponseRecorder {
+func handleHttp(t *testing.T, r *Router, method string, path string, body io.Reader) *httptest.ResponseRecorder {
 	req, err := http.NewRequest(method, path, body)
 	if err != nil {
 		t.Fatal(err)

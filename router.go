@@ -21,13 +21,13 @@ type routeConfig struct {
 	handler      http.HandlerFunc
 }
 
-type router struct {
+type Router struct {
 	routes []*routeConfig
-	appenv *goappenv.AppEnv
+	appenv goappenv.IAppEnv
 	logger *log.Logger
 }
 
-func NewRouter(appenv *goappenv.AppEnv, logger *log.Logger) *router {
+func NewRouter(appenv goappenv.IAppEnv, logger *log.Logger) *Router {
 	var routerLogger *log.Logger
 	if logger == nil {
 		routerLogger = log.Default()
@@ -35,14 +35,14 @@ func NewRouter(appenv *goappenv.AppEnv, logger *log.Logger) *router {
 		routerLogger = logger
 	}
 
-	return &router{
+	return &Router{
 		routes: make([]*routeConfig, 0),
 		appenv: appenv,
 		logger: routerLogger,
 	}
 }
 
-func (r *router) AddRoute(method httpMethod.HttpMethod, path string, handler http.HandlerFunc) {
+func (r *Router) AddRoute(method httpMethod.HttpMethod, path string, handler http.HandlerFunc) {
 	r.routes = append(r.routes, &routeConfig{
 		httpMethod:   method,
 		path:         path,
@@ -51,7 +51,7 @@ func (r *router) AddRoute(method httpMethod.HttpMethod, path string, handler htt
 	})
 }
 
-func (r *router) handle(respWriter http.ResponseWriter, req *http.Request) {
+func (r *Router) handle(respWriter http.ResponseWriter, req *http.Request) {
 	var targetRoute *routeConfig
 	var paramMapCtx map[string]string
 	requestSegment := strings.Split(strings.TrimRight(req.URL.Path, "/"), "/")
@@ -87,7 +87,7 @@ func (r *router) handle(respWriter http.ResponseWriter, req *http.Request) {
 	}
 }
 
-func (r *router) NewServer() (*http.Server, error) {
+func (r *Router) NewServer() (*http.Server, error) {
 	readTimeout, err := time.ParseDuration(goappenv.ConfigOrDefault(r.appenv, "server.readTimeout", "1m").(string))
 	if err != nil {
 		return nil, errors.New("server.readTimeout invalid !!, required string format of time.Duration")
