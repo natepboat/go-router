@@ -9,6 +9,8 @@ github.com/natepboat/go-app-env v1.0.3 h1:Suf6NSukzO4wdapWVIigNMM7o4aeiRPNkw/819
 github.com/natepboat/go-app-env v1.0.3/go.mod h1:9Ih64ciVSJ0rXJxUvHSHew4ht/ZQLgwWJpzjrzidL0Q=
 github.com/natepboat/go-app-env v1.0.4 h1:bFm+9OPAQS4XN6F/JcYHw1QDWJUNwWbbwPe7XO/Vid8=
 github.com/natepboat/go-app-env v1.0.4/go.mod h1:9Ih64ciVSJ0rXJxUvHSHew4ht/ZQLgwWJpzjrzidL0Q=
+github.com/natepboat/go-app-env v1.0.5 h1:BaZS5DnwK/GhWZngQyI+V4c1uAJuvl//eE9WE4J01os=
+github.com/natepboat/go-app-env v1.0.5/go.mod h1:9Ih64ciVSJ0rXJxUvHSHew4ht/ZQLgwWJpzjrzidL0Q=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=

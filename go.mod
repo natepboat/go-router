@@ -3,7 +3,7 @@ module github.com/natepboat/go-router
 go 1.18
 
 require (
-	github.com/natepboat/go-app-env v1.0.4
+	github.com/natepboat/go-app-env v1.0.5
 	github.com/stretchr/testify v1.8.2
 )
 
